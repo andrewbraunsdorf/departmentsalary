@@ -50,6 +50,16 @@ fs.readFile("load_dept_emp.txt", "utf8", function(err, data){
 	var employeeDataClean = data.replace(/INSERT INTO `dept_emp` VALUES /g, "");
 	var employeeDataArray = employeeDataClean.split("\n");
 	
-	console.log(employeeDataArray);
+	for (var i = 0; i < employeeDataArray.length; i++) {
+		if (employeeDataArray[i].slice(28, 32) == "9999") {
+			
+			console.log(employeeDataArray[i].slice(8, 12));
+			console.log(employeeDataArray[i].slice(1, 6));
+			// employeeId[departmentId.indexOf(employeeDataArray[i].slice(7, 12))].push(employeeDataArray[i].slice(1,7));
+		}
+	}
+//	employeeId.push(employeeDataArray[i])
+	
+	// console.log(employeeId);
 	
 });

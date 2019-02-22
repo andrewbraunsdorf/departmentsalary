@@ -16,7 +16,17 @@ var salaries = [];
 // Process "load_dept_name.txt" file
 fs.readFile("load_dept_names.txt", "utf8", function(err, data){
 	if (err) throw err;
+
 	
-	console.log(data);
-	//remove the u
+	var deptDataClean = data.replace(/INSERT INTO `departments` VALUES \n/g, "");
+	
+	var deptDataArray = deptDataClean.split("\n");
+	for (var i = 0; i < deptDataArray.length; i++) {
+		departmentId.push(deptDataArray[i].slice(2,6));
+	}
+		for (var j = 0; j < deptDataArray.length; j++) {
+		departments.push(deptDataArray[j].slice(9,-3));
+	}
+	console.log(departmentId);
+	console.log(departments);
 })

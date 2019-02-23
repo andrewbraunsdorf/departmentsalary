@@ -77,23 +77,24 @@ fs.readFile("load_salaries1.txt", "utf8", function(err, data) {
 
 	for (var i = 0; i < salaryDataArray.length; i++) {
 		if (salaryDataArray[i].slice(27, 31) == "9999") {
-			console.log("Salary empId: ", salaryDataArray[i].slice(1, 6));
+			// console.log("Salary empId: ", salaryDataArray[i].slice(1, 6));
 			for (var j = 0; j < employeeId.length; j++) {
 				for (var k = 0; k < employeeId[j].length; k++) {
 					
-					console.log(employeeId[j][k]);
+					// console.log(employeeId[j][k]);
 					if (salaryDataArray[i].slice(1, 6) == employeeId[j][k]) {
-						console.log("!!!! Match !!!!");
+						// console.log("!!!! Match !!!!");
+						salaries[j][k] = salaryDataArray[i].slice(7, 12);
 					}
 				}
 			}
 
-			console.log(salaryDataArray[i].slice(1, 6));
+			// console.log(salaryDataArray[i].slice(1, 6));
 			
 			// salaries.push(salaryDataArray[i].slice(1, 6));
 		}
 	}
-	// console.log(salaries);
+	console.log(salaries);
 
 });
 // for (var j = 0; j < employeeId[i].length; j++) {

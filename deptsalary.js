@@ -80,7 +80,7 @@ fs.readFile("load_salaries1.txt", "utf8", function(err, data) {
 			// console.log("Salary empId: ", salaryDataArray[i].slice(1, 6));
 			for (var j = 0; j < employeeId.length; j++) {
 				for (var k = 0; k < employeeId[j].length; k++) {
-					
+
 					// console.log(employeeId[j][k]);
 					if (salaryDataArray[i].slice(1, 6) == employeeId[j][k]) {
 						// console.log("!!!! Match !!!!");
@@ -90,7 +90,7 @@ fs.readFile("load_salaries1.txt", "utf8", function(err, data) {
 			}
 
 			// console.log(salaryDataArray[i].slice(1, 6));
-			
+
 			// salaries.push(salaryDataArray[i].slice(1, 6));
 		}
 	}
@@ -108,19 +108,33 @@ fs.readFile("load_salaries1.txt", "utf8", function(err, data) {
 
 // .split(",").reverse().join("")
 
-fs.readFile("load_employee.txt", "utf8", function(err, data){
+fs.readFile("load_employee.txt", "utf8", function(err, data) {
 	if (err) throw err;
 
 	var employeeNameDataClean = data.replace(/INSERT INTO `employees` VALUES /g, "");
 	var employeeNameDataArray = employeeNameDataClean.split("\n");
 
 	for (var i = 0; i < employeeNameDataArray.length; i++) {
-		console.log(employeeNameDataArray[i].slice(21, -20));
+		employeeNameDataArray[i].slice(21, -20);//.split(",").reverse().join(""));
 		
-		console.log(employeeNameDataArray[i]);
+		
+		// console.log(employeeNameSplit[i]);
+		for (var j = 0; j < employeeId.length; j++) {
+			for (var k = 0; k < employeeId[j].length; k++) {
+				if (employeeNameDataArray[i].slice(1, 6) == employeeId[j][k]) {
+					//salaries[j][k] = salaryDataArray[i].slice(7, 12);
+					employeeName[j][k] = employeeNameDataArray[i].slice(21, -20);
+
+				// employeeId[departmentId.indexOf(employeeDataArray[i].slice(8, 12))].push(employeeDataArray[i].slice(1,6));
+				// employeeName[employeeId.indexOf(employeeNameDataArray[i][j].slice(2, 6))] //.push(employeeNameDataArray[i][j].slice(20, -19));
+			
+				}
+				}
+		}
+		// console.log(employeeNameDataArray[i]);
 
 	}
-	// console.log(employeeName);
+	console.log(employeeName);
 
 });
 

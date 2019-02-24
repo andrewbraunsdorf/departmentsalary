@@ -116,13 +116,9 @@ fs.readFile("load_employee.txt", "utf8", function(err, data){
 
 	for (var i = 0; i < employeeNameDataArray.length; i++) {
 		console.log(employeeNameDataArray[i].slice(21, -20));
-		for (var j = 0; j < employeeId.length; j++) {
-			for (var k = 0; k < employeeId[j].length; k++) {
 		
-		// employeeId[departmentId.indexOf(employeeDataArray[i].slice(8, 12))].push(employeeDataArray[i].slice(1,6));
-		// employeeName[employeeId.indexOf(employeeNameDataArray[i][j].slice(2, 6))] //.push(employeeNameDataArray[i][j].slice(20, -19));
-	}
-		}
+		console.log(employeeNameDataArray[i]);
+
 	}
 	// console.log(employeeName);
 

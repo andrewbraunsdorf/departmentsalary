@@ -108,22 +108,25 @@ fs.readFile("load_salaries1.txt", "utf8", function(err, data) {
 
 // .split(",").reverse().join("")
 
-// fs.readFile("load_employee.txt", "utf8", function(err, data){
-// 	if (err) throw err;
+fs.readFile("load_employee.txt", "utf8", function(err, data){
+	if (err) throw err;
 
-// 	var employeeNameDataClean = data.replace(/INSERT INTO `employees` VALUES /g, "");
-// 	var employeeNameDataArray = employeeNameDataClean.split("\n");
+	var employeeNameDataClean = data.replace(/INSERT INTO `employees` VALUES /g, "");
+	var employeeNameDataArray = employeeNameDataClean.split("\n");
 
-// 	for (var i = 0; i < departments.length; i++) {
-// 		for (var j = 0; j < employeeId[i].length; j++) {
-// 		// console.log(employeeNameDataArray[i].slice(21, -20));
-// 		// employeeId[departmentId.indexOf(employeeDataArray[i].slice(8, 12))].push(employeeDataArray[i].slice(1,6));
-// 		employeeName[employeeId.indexOf(employeeNameDataArray[i][j].slice(2, 6))].push(employeeNameDataArray[i][j].slice(20, -19));
-// 	}
-// 	}
-// 	console.log(employeeName);
+	for (var i = 0; i < employeeNameDataArray.length; i++) {
+		console.log(employeeNameDataArray[i].slice(21, -20));
+		for (var j = 0; j < employeeId.length; j++) {
+			for (var k = 0; k < employeeId[j].length; k++) {
+		
+		// employeeId[departmentId.indexOf(employeeDataArray[i].slice(8, 12))].push(employeeDataArray[i].slice(1,6));
+		// employeeName[employeeId.indexOf(employeeNameDataArray[i][j].slice(2, 6))] //.push(employeeNameDataArray[i][j].slice(20, -19));
+	}
+		}
+	}
+	// console.log(employeeName);
 
-// });
+});
 
 
 //dump all fs files into one file.AS

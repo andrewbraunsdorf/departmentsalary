@@ -1,0 +1,58 @@
+var fs = require('fs');
+
+// Step 1. Create all single-d and multi-d arrays AS empty arrays (initially)
+// push single string data/elements into an array as a single element
+// push array data into an array to form multi-d arrays
+
+// single-d arrays -- valid
+var departmentId = []; // done
+var departments = []; // done
+
+//create empty multi-d arrays -- currently invalid. Must push sub arrays 
+var employeeId = [];
+var employeeName = [];
+var salaries = [];
+
+// Process 'load_dept_name.txt' file
+fs.readFile('load_dept_names.txt', 'utf8', function(err, data) {
+if (err) throw err;
+
+var deptDataClean = data.replace(/INSERT INTO `departments` VALUES \n/g, "");
+var deptDataArray = deptDataClean.split('\n');
+
+
+for (var i = 0; i < deptDataArray.length; i++) {
+// populate single-d arrays with DATA
+departmentId.push(deptDataArray[i].slice(2, 6));
+departments.push(deptDataArray[i].slice(9, -3));
+
+// populate multi-d arrays with empty sub-arrays [] (NO DATA!!!)
+
+employeeId.push([]);
+employeeName.push([]);
+salaries.push([]);
+}
+});
+
+// Dept-Emp arrays
+var employeeDataClean;
+var employeeDataArray;
+
+// Process 'load_dept_emp.txt' file
+fs.readFile('load_dept_emp.txt', 'utf8', function(err, data) {
+if (err) throw err;
+
+employeeDataClean = data.replace(/INSERT INTO `dept_emp` VALUES /g, "");
+employeeDataArray = employeeDataClean.split('\n');
+
+for (var i = 0; i < employeeDataArray.length; i++) {
+if (employeeDataArray[i].slice(28, 32) == '9999') {
+
+// employeeId[4].push(10001);
+employeeId[departmentId.indexOf(employeeDataArray[i].slice(8, 12))].push(employeeDataArray[i].slice(1, 6));
+}
+}
+// console.log("EmployeeId Array:");
+console.log(employeeId);
+
+});

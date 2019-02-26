@@ -90,3 +90,33 @@ fs.readFile('load_salaries1.txt', 'utf8', function(err, data) {
 	console.log(salaries);
 
 });
+
+fs.readFile('load_employee.txt', 'utf8', function(err, data) {
+if (err) throw err;
+
+var nameSplit, nameSplitId, joinedNames;
+
+var nameDataClean = data.replace(/INSERT INTO `employees` VALUES /g, "");
+var nameDataArray = nameDataClean.split('\n');
+
+for (var i = 0; i < nameDataArray.length; i++) {
+
+nameSplit = nameDataArray[i].split(',');
+nameSplitId = nameSplit[0].replace(/\(/g, "");
+
+console.log(nameSplit);
+
+
+
+}
+
+
+// console.log("employeeName");
+console.log(employeeName);
+
+// console.log(employeeName[0][0]);
+
+
+
+
+});

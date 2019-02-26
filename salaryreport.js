@@ -104,10 +104,20 @@ for (var i = 0; i < nameDataArray.length; i++) {
 nameSplit = nameDataArray[i].split(',');
 nameSplitId = nameSplit[0].replace(/\(/g, "");
 
-console.log(nameSplit);
+// console.log(nameSplit);
 
 
+console.log("nameSplitId");
+console.log(nameSplitId);
 
+console.log("nameSplit[1]");
+console.log(nameSplit[1]);
+for (var j = 0; j < employeeId.length; j++) {
+
+for (var k = 0; k < employeeId[j].length; k++) {
+
+}
+}
 }
 
 

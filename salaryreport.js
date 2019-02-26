@@ -15,23 +15,23 @@ var salaries = [];
 
 // Process 'load_dept_name.txt' file
 fs.readFile('load_dept_names.txt', 'utf8', function(err, data) {
-if (err) throw err;
+	if (err) throw err;
 
-var deptDataClean = data.replace(/INSERT INTO `departments` VALUES \n/g, "");
-var deptDataArray = deptDataClean.split('\n');
+	var deptDataClean = data.replace(/INSERT INTO `departments` VALUES \n/g, "");
+	var deptDataArray = deptDataClean.split('\n');
 
 
-for (var i = 0; i < deptDataArray.length; i++) {
-// populate single-d arrays with DATA
-departmentId.push(deptDataArray[i].slice(2, 6));
-departments.push(deptDataArray[i].slice(9, -3));
+	for (var i = 0; i < deptDataArray.length; i++) {
+		// populate single-d arrays with DATA
+		departmentId.push(deptDataArray[i].slice(2, 6));
+		departments.push(deptDataArray[i].slice(9, -3));
 
-// populate multi-d arrays with empty sub-arrays [] (NO DATA!!!)
+		// populate multi-d arrays with empty sub-arrays [] (NO DATA!!!)
 
-employeeId.push([]);
-employeeName.push([]);
-salaries.push([]);
-}
+		employeeId.push([]);
+		employeeName.push([]);
+		salaries.push([]);
+	}
 });
 
 // Dept-Emp arrays
@@ -40,53 +40,53 @@ var employeeDataArray;
 
 // Process 'load_dept_emp.txt' file
 fs.readFile('load_dept_emp.txt', 'utf8', function(err, data) {
-if (err) throw err;
+	if (err) throw err;
 
-employeeDataClean = data.replace(/INSERT INTO `dept_emp` VALUES /g, "");
-employeeDataArray = employeeDataClean.split('\n');
+	employeeDataClean = data.replace(/INSERT INTO `dept_emp` VALUES /g, "");
+	employeeDataArray = employeeDataClean.split('\n');
 
-for (var i = 0; i < employeeDataArray.length; i++) {
-if (employeeDataArray[i].slice(28, 32) == '9999') {
+	for (var i = 0; i < employeeDataArray.length; i++) {
+		if (employeeDataArray[i].slice(28, 32) == '9999') {
 
-// employeeId[4].push(10001);
-employeeId[departmentId.indexOf(employeeDataArray[i].slice(8, 12))].push(employeeDataArray[i].slice(1, 6));
-}
-}
-// console.log("EmployeeId Array:");
-console.log(employeeId);
+			// employeeId[4].push(10001);
+			employeeId[departmentId.indexOf(employeeDataArray[i].slice(8, 12))].push(employeeDataArray[i].slice(1, 6));
+		}
+	}
+	// console.log("EmployeeId Array:");
+	console.log(employeeId);
 
 });
 
 fs.readFile('load_salaries1.txt', 'utf8', function(err, data) {
-if (err) throw err;
+	if (err) throw err;
 
-// Salary arrays
-var salaryDataClean;
-var salaryDataArray;
+	// Salary arrays
+	var salaryDataClean;
+	var salaryDataArray;
 
-salaryDataClean = data.replace(/INSERT INTO `salaries` VALUES /g, "");
-salaryDataArray = salaryDataClean.split('\n');
+	salaryDataClean = data.replace(/INSERT INTO `salaries` VALUES /g, "");
+	salaryDataArray = salaryDataClean.split('\n');
 
-for (var i = 0; i < salaryDataArray.length; i++) {
+	for (var i = 0; i < salaryDataArray.length; i++) {
 
-// if (salaryDataArray[16].slice(9999) == '9999') {
-if (salaryDataArray[i].slice(27, 31) == '9999') {
+		// if (salaryDataArray[16].slice(9999) == '9999') {
+		if (salaryDataArray[i].slice(27, 31) == '9999') {
 
-// console.log("Current Salary, EmployeeId:");
-// console.log(salaryDataArray[i].slice(1, 6));
+			// console.log("Current Salary, EmployeeId:");
+			// console.log(salaryDataArray[i].slice(1, 6));
 
-for (var j = 0; j < employeeId.length; j++) { // loops through the 20 employee id's in the employeeId array
+			for (var j = 0; j < employeeId.length; j++) { // loops through the 20 employee id's in the employeeId array
 
-for (var k = 0; k < employeeId[j].length; k++) {
+				for (var k = 0; k < employeeId[j].length; k++) {
 
-if (employeeId[j][k] == salaryDataArray[i].slice(1, 6)) {
+					if (employeeId[j][k] == salaryDataArray[i].slice(1, 6)) {
 
-
-}
-}
-}
-}
-}
-console.log(salaries);
+						salaries[j].push(salaryDataArray[i].slice(7, 12));
+					}
+				}
+			}
+		}
+	}
+	console.log(salaries);
 
 });

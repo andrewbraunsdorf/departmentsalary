@@ -56,3 +56,37 @@ employeeId[departmentId.indexOf(employeeDataArray[i].slice(8, 12))].push(employe
 console.log(employeeId);
 
 });
+
+fs.readFile('load_salaries1.txt', 'utf8', function(err, data) {
+if (err) throw err;
+
+// Salary arrays
+var salaryDataClean;
+var salaryDataArray;
+
+salaryDataClean = data.replace(/INSERT INTO `salaries` VALUES /g, "");
+salaryDataArray = salaryDataClean.split('\n');
+
+for (var i = 0; i < salaryDataArray.length; i++) {
+
+// if (salaryDataArray[16].slice(9999) == '9999') {
+if (salaryDataArray[i].slice(27, 31) == '9999') {
+
+// console.log("Current Salary, EmployeeId:");
+// console.log(salaryDataArray[i].slice(1, 6));
+
+for (var j = 0; j < employeeId.length; j++) { // loops through the 20 employee id's in the employeeId array
+
+for (var k = 0; k < employeeId[j].length; k++) {
+
+if (employeeId[j][k] == salaryDataArray[i].slice(1, 6)) {
+
+
+}
+}
+}
+}
+}
+console.log(salaries);
+
+});

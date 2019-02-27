@@ -92,39 +92,43 @@ fs.readFile('load_salaries1.txt', 'utf8', function(err, data) {
 });
 
 fs.readFile('load_employee.txt', 'utf8', function(err, data) {
-if (err) throw err;
+	if (err) throw err;
 
-var nameSplit, nameSplitId, joinedNames;
+	var nameSplit, nameSplitId, joinedNames;
 
-var nameDataClean = data.replace(/INSERT INTO `employees` VALUES /g, "");
-var nameDataArray = nameDataClean.split('\n');
+	var nameDataClean = data.replace(/INSERT INTO `employees` VALUES /g, "");
+	var nameDataArray = nameDataClean.split('\n');
 
-for (var i = 0; i < nameDataArray.length; i++) {
+	for (var i = 0; i < nameDataArray.length; i++) {
 
-nameSplit = nameDataArray[i].split(',');
-nameSplitId = nameSplit[0].replace(/\(/g, "");
+		nameSplit = nameDataArray[i].split(',');
+		nameSplitId = nameSplit[0].replace(/\(/g, "");
 
-// console.log(nameSplit);
-
-
-console.log("nameSplitId");
-console.log(nameSplitId);
-
-console.log("nameSplit[1]");
-console.log(nameSplit[1]);
-for (var j = 0; j < employeeId.length; j++) {
-
-for (var k = 0; k < employeeId[j].length; k++) {
-
-}
-}
-}
+		// console.log(nameSplit);
 
 
-// console.log("employeeName");
-console.log(employeeName);
+		// console.log("nameSplitId");
+		// console.log(nameSplitId);
 
-// console.log(employeeName[0][0]);
+		// console.log("nameSplit[1]");
+		// console.log(nameSplit[1]);
+		for (var j = 0; j < employeeId.length; j++) {
+
+			for (var k = 0; k < employeeId[j].length; k++) {
+				
+
+				console.log(nameSplit[2].replace(/'/g, ""), nameSplit[3].replace(/'/g, ""));
+
+			
+			}
+		}
+	}
+
+
+	// console.log("employeeName");
+	console.log(employeeName);
+
+	// console.log(employeeName[0][0]);
 
 
 

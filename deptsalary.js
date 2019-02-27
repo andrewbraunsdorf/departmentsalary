@@ -84,7 +84,8 @@ fs.readFile("load_salaries1.txt", "utf8", function(err, data) {
 					// console.log(employeeId[j][k]);
 					if (salaryDataArray[i].slice(1, 6) == employeeId[j][k]) {
 						// console.log("!!!! Match !!!!");
-						salaries[j][k] = salaryDataArray[i].slice(7, 12);
+						salaries[j].push(salaryDataArray[i].slice(7, 12));
+						// salaries[j][k] = salaryDataArray[i].slice(7, 12);
 					}
 				}
 			}

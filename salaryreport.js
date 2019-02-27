@@ -115,11 +115,12 @@ fs.readFile('load_employee.txt', 'utf8', function(err, data) {
 		for (var j = 0; j < employeeId.length; j++) {
 
 			for (var k = 0; k < employeeId[j].length; k++) {
-				
 
-				console.log(nameSplit[2].replace(/'/g, ""), nameSplit[3].replace(/'/g, ""));
 
-			
+				joinedNames = nameSplit[2].replace(/'/g, "") + " " + nameSplit[3].replace(/'/g, "");
+				employeeName[j].push(joinedNames);
+
+
 			}
 		}
 	}

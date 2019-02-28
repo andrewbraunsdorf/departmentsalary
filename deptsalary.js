@@ -125,7 +125,7 @@ fs.readFile("load_employee.txt", "utf8", function(err, data) {
 			for (var k = 0; k < employeeId[j].length; k++) {
 				if (employeeNameDataArray[i].slice(1, 6) == employeeId[j][k]) {
 					//salaries[j][k] = salaryDataArray[i].slice(7, 12);
-					employeeName[j][k] = employeeNameDataArray[i].slice(21, -20).split(",").reverse().join(" ");
+					employeeName[j][k] = employeeNameDataArray[i].slice(21, -20).split(",").reverse().join(" ").replace(/'/g, "");
 
 				// employeeId[departmentId.indexOf(employeeDataArray[i].slice(8, 12))].push(employeeDataArray[i].slice(1,6));
 				// employeeName[employeeId.indexOf(employeeNameDataArray[i][j].slice(2, 6))] //.push(employeeNameDataArray[i][j].slice(20, -19));

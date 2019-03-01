@@ -95,7 +95,16 @@ fs.readFile("load_salaries1.txt", "utf8", function(err, data) {
 			// salaries.push(salaryDataArray[i].slice(1, 6));
 		}
 	}
-	console.log(salaries);
+	    let totalSalary = 0;
+
+    // POPULATE THE COMPLETED SALES REPORT
+
+    for (var i = 0; i < departmentId.length; i++) {
+        console.log(`Department ${departmentId[i]} - ${departments[i]}:`);
+
+    }
+
+	// console.log(salaries);
 
 });
 

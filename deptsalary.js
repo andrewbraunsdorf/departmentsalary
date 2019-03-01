@@ -95,13 +95,21 @@ fs.readFile("load_salaries1.txt", "utf8", function(err, data) {
 			// salaries.push(salaryDataArray[i].slice(1, 6));
 		}
 	}
-	    let totalSalary = 0;
+    let totalSalary = 0;
 
     // POPULATE THE COMPLETED SALES REPORT
 
     for (var i = 0; i < departmentId.length; i++) {
         console.log(`Department ${departmentId[i]} - ${departments[i]}:`);
 
+        let eachDept = 0;
+
+        for (var j = 0; j < salaries[i].length; j++) {
+
+            console.log(` ${j+1}: Employee ID: ${employeeId[i][j]}, Name: ${employeeName[i][j]}, Salary: ${salaries[i][j]}`);
+
+        }
+        console.log(`The total salary for ${departments[i]} is: ${eachDept}`);
     }
 
 	// console.log(salaries);

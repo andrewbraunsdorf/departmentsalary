@@ -108,11 +108,15 @@ fs.readFile("load_salaries1.txt", "utf8", function(err, data) {
 
             console.log(` ${j+1}: Employee ID: ${employeeId[i][j]}, Name: ${employeeName[i][j]}, Salary: ${salaries[i][j]}`);
 
+            eachDept += +salaries[i][j];
+            totalSalary += +salaries[i][j];
+
         }
         console.log(`The total salary for ${departments[i]} is: ${eachDept}`);
     }
-
-	// console.log(salaries);
+    console.log('\n')
+    console.log("Total salary " + totalSalary);
+    // console.log(salaries);
 
 });
 
